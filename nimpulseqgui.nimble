@@ -11,5 +11,5 @@ srcDir        = "src"
 
 requires "nim >= 2.0.0"
 requires "nigui"
-requires "https://github.com/fsantini/nimpulseq"
-requires "https://github.com/fsantini/PulseqSystems"
+requires "https://github.com/nimpulseq/nimpulseq"
+requires "https://github.com/nimpulseq/PulseqSystems"

@@ -6,8 +6,8 @@ Requirements
 
 - `Nim <https://nim-lang.org/>`_ >= 2.0.0
 - `nigui <https://github.com/simonkrauter/NiGui>`_ — cross-platform GUI toolkit
-- `nimpulseq <https://github.com/fsantini/nimpulseq>`_ — Pulseq sequence writer
-- `PulseqSystems <https://github.com/fsantini/PulseqSystems>`_ — scanner hardware presets
+- `nimpulseq <https://github.com/nimpulseq/nimpulseq>`_ — Pulseq sequence writer
+- `PulseqSystems <https://github.com/nimpulseq/PulseqSystems>`_ — scanner hardware presets
 
 Installation
 ------------
@@ -16,13 +16,13 @@ Add nimpulseqgui to your ``.nimble`` project:
 
 .. code-block:: nim
 
-   requires "https://github.com/fsantini/nimpulseqgui"
+   requires "https://github.com/nimpulseq/nimpulseqgui"
 
 Or install via nimble:
 
 .. code-block:: bash
 
-   nimble install https://github.com/fsantini/nimpulseqgui
+   nimble install https://github.com/nimpulseq/nimpulseqgui
 
 Design Pattern
 --------------

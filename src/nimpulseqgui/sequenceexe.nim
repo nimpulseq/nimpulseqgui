@@ -47,7 +47,7 @@ proc printHelp() =
     echo "  --list-models                      List available models for a given manufacturer (in conjunction with --manufacturer)"
     echo ""
     echo "All flags are optional except for --output. If values are not specified, the pulseq default values are taken."
-    echo "For manufacturer/model specifications, see https://github.com/fsantini/PulseqSystems/"
+    echo "For manufacturer/model specifications, see https://github.com/nimpulseq/PulseqSystems/"
 
 template assignDefault(field: float64) =
     if `field` < 0.0: `field` = opts.`field`

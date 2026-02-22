@@ -71,8 +71,8 @@ newDescriptionProperty(desc: string)
 ## Dependencies
 
 - `nigui` — cross-platform GUI framework
-- `nimpulseq` (https://github.com/fsantini/nimpulseq) — Pulseq sequence object and file writer
-- `PulseqSystems` (https://github.com/fsantini/PulseqSystems) — scanner hardware presets (manufacturer/model/gradient system definitions)
+- `nimpulseq` (https://github.com/nimpulseq/nimpulseq) — Pulseq sequence object and file writer
+- `PulseqSystems` (https://github.com/nimpulseq/PulseqSystems) — scanner hardware presets (manufacturer/model/gradient system definitions)
 
 ## Sequence File Format
 

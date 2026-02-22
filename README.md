@@ -186,7 +186,7 @@ All flags are optional except `--output`.
 | `--list-manufacturers` | Print available manufacturers and exit |
 | `--list-models` | Print available models for `--manufacturer` and exit |
 
-For available manufacturer/model/gradient names, see the [PulseqSystems repository](https://github.com/fsantini/PulseqSystems/).
+For available manufacturer/model/gradient names, see the [PulseqSystems repository](https://github.com/nimpulseq/PulseqSystems/).
 
 ## Protocol persistence
 
@@ -205,8 +205,8 @@ Pass the file back with `--input` (or via the GUI "Load..." button) to restore t
 ## Dependencies
 
 - [`nigui`](https://github.com/simonkrauter/NiGui) — cross-platform GUI
-- [`nimpulseq`](https://github.com/fsantini/nimpulseq) — Pulseq sequence object and file writer
-- [`PulseqSystems`](https://github.com/fsantini/PulseqSystems) — scanner hardware presets
+- [`nimpulseq`](https://github.com/nimpulseq/nimpulseq) — Pulseq sequence object and file writer
+- [`PulseqSystems`](https://github.com/nimpulseq/PulseqSystems) — scanner hardware presets
 
 ## License
 
