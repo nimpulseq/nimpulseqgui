@@ -1,5 +1,5 @@
 project = "nimpulseqgui"
-copyright = "2024, nimpulseqgui Contributors"
+copyright = "2026, nimpulseqgui Contributors"
 author = "nimpulseqgui Contributors"
 release = "0.1.0"
 
