@@ -17,7 +17,7 @@ build:
     - $HOME/.nimble/bin/nim --version
 
     # ---- 2. Install nimble dependencies ----
-    - $HOME/.nimble/bin/nimble install https://github.com/fsantini/nimpulseqgui -y
+    - $HOME/.nimble/bin/nimble install https://github.com/nimpulseq/nimpulseqgui -y
 
     # ---- 3. Install Python / Sphinx dependencies ----
     - pip install -r docs/requirements.txt
