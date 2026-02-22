@@ -18,7 +18,7 @@ proc printHelp() =
     let name = getAppFilename().extractFilename()
     echo &"Usage: {name} [options]"
     echo "Options:"
-    echo "  -o, --output=<file>       Default output file for generated sequence (required)"
+    echo "  -o, --output=<file>       Default output file for generated sequence"
     echo "  -i, --input=<file>        Input file to pre-load protocol parameters (e.g. from a previous run) (optional)"
     echo "  --manufacturer=<name>     Scanner manufacturer (e.g. Siemens Healthcare)"
     echo "  --model=<name>            Scanner model (e.g. MAGNETOM Prisma)"
@@ -91,7 +91,7 @@ proc makeSequenceExe*(getDefaultProtocol: ProcGetDefaultProtocol,
     ##
     ## Supported command-line flags (parsed automatically):
     ##
-    ## - ``--output / -o`` *(required)*: output ``.seq`` file path.
+    ## - ``--output / -o`` : output ``.seq`` file path.
     ## - ``--input / -i``: load protocol parameters from an existing ``.seq`` file.
     ## - ``--manufacturer``, ``--model``, ``--gradient``: select a scanner preset from PulseqSystems.
     ## - ``--maxGrad``, ``--maxSlew``, ``--riseTime``: override gradient hardware limits.
@@ -105,7 +105,7 @@ proc makeSequenceExe*(getDefaultProtocol: ProcGetDefaultProtocol,
     ## - ``--list-manufacturers``, ``--list-models``: list available PulseqSystems presets and exit.
     ## - ``--help / -h``: print help and exit.
     var prot: MRProtocolRef
-    var defaultOutput: string = ""
+    var defaultOutput: string = "out.seq"
     var inputProtocolFile: string = ""
     var manufacturer, model, gradient: string = ""
     var maxGrad, maxSlew, riseTime, rfDeadTime, rfRingdownTime, adcDeadTime, adcRasterTime, rfRasterTime, gradRasterTime, blockDurationRaster, gamma, B0: float64 = -1
@@ -194,11 +194,6 @@ proc makeSequenceExe*(getDefaultProtocol: ProcGetDefaultProtocol,
         printModels(manufacturer)
         quit(0)
 
-
-    if defaultOutput == "":
-        printHelp()
-        quit(1)
-
     
     # if manufacturer and model are provided, we can try to get system specs and fill in any missing options.
     # Explicit options on the command line take precedence over system specs, which take precedence over defaults.
@@ -253,6 +248,15 @@ proc makeSequenceExe*(getDefaultProtocol: ProcGetDefaultProtocol,
         if title != "":
             window.title = title
         window.show()
+        
+        # the following is a trick to allow correct sizing of the containers under windows
+        proc resizeTimer(event: TimerEvent) =
+            let height = window.height
+            let width = window.width
+            window.height = height+1
+            window.height = height
+        
+        startTimer(100, resizeTimer)
         app.run()
     else:
         let seq = makeSequence(opts, prot)

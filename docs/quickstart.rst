@@ -16,13 +16,13 @@ Add nimpulseqgui to your ``.nimble`` project:
 
 .. code-block:: nim
 
-   requires "nimpulseqgui"
+   requires "https://github.com/fsantini/nimpulseqgui"
 
 Or install via nimble:
 
 .. code-block:: bash
 
-   nimble install nimpulseqgui
+   nimble install https://github.com/fsantini/nimpulseqgui
 
 Design Pattern
 --------------
@@ -76,21 +76,21 @@ Compile and run:
    nim c -o my_sequence my_sequence.nim
 
    # Launch GUI
-   ./my_sequence --output out.seq
+   ./my_sequence 
 
    # Run headless (no GUI)
-   ./my_sequence --output out.seq --no-gui
+   ./my_sequence --no-gui
 
    # Pre-load protocol from a previous run
-   ./my_sequence --output out.seq --input previous.seq
+   ./my_sequence ---input=previous.seq
 
    # Use a scanner preset from PulseqSystems
-   ./my_sequence --output out.seq --manufacturer "Siemens Healthcare" \
-                 --model "MAGNETOM Prisma"
+   ./my_sequence --manufacturer="Siemens Healthcare" \
+                 --model="MAGNETOM Prisma"
 
    # List available scanner presets
    ./my_sequence --list-manufacturers
-   ./my_sequence --manufacturer "Siemens Healthcare" --list-models
+   ./my_sequence --manufacturer="Siemens Healthcare" --list-models
 
 Protocol Persistence
 --------------------
