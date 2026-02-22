@@ -49,8 +49,18 @@ proc binarySearch[searchMin: static bool, T](opts: Opts, protocolCopy: MRProtoco
     var nSteps = int(round((upperBound - lowerBound)/increment))
     if nSteps <= 1:
         when searchMin:
+            # upperbound is for sure passing, when searching for the minimum, so try the lower bound
+            setValue(lowerBound)
+            if safeValidateProtocol(opts, protocolCopy, validateProc):
+                # the lower bound is also passing, so return it
+                return lowerBound
+            # if the above did not pass, return the upper bound, which is for sure passing
             return upperBound
         else:
+            setValue(upperBound)
+            if safeValidateProtocol(opts, protocolCopy, validateProc):
+                # the upper bound is also passing, so return it
+                return upperBound
             return lowerBound
 
     # test the middle value

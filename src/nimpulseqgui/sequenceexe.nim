@@ -252,7 +252,6 @@ proc makeSequenceExe*(getDefaultProtocol: ProcGetDefaultProtocol,
         # the following is a trick to allow correct sizing of the containers under windows
         proc resizeTimer(event: TimerEvent) =
             let height = window.height
-            let width = window.width
             window.height = height+1
             window.height = height
         
