@@ -144,8 +144,11 @@ proc numericEditor[T](window: Window, opts: Opts, prot: MRProtocolRef, propertyN
     var editWidgetsContainer = newLayoutContainer(Layout_Horizontal)
     editWidgetsContainer.yAlign = YAlign_Center
     var nameLabel = newLabelFont(propertyName)
+    nameLabel.widthMode = WidthMode_Expand
     var textEdit = newTextBox(currentVal.repr)
+    textEdit.widthMode = WidthMode_Expand
     var unitLabel = newLabelFont(prot[propertyName].unit)
+    unitLabel.widthMode = WidthMode_Expand
     var validateButton = newButton("Validate")
     editWidgetsContainer.add(nameLabel)
     editWidgetsContainer.add(textEdit)
