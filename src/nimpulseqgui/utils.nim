@@ -1,7 +1,7 @@
 import definitions
 import nigui
 
-var globalFontSize*: int = 14
+var globalFontSize*: int = 0
 
 proc safeValidateProtocol*(opts: Opts, protocol: MRProtocolRef, validateProc: ProcValidateProtocol): bool =
   ## Calls *validateProc* and returns its result, catching any exception.
@@ -19,5 +19,6 @@ proc safeValidateProtocol*(opts: Opts, protocol: MRProtocolRef, validateProc: Pr
 proc newLabelFont*(text: string = ""): Label =
   ## Creates a new ``Label`` with the global font size.
   let lbl = newLabel(text)
-  lbl.fontSize = globalFontSize.float
+  if globalFontSize > 0:
+    lbl.fontSize = globalFontSize.float
   result = lbl
