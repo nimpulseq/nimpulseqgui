@@ -155,11 +155,11 @@ nim c -o my_sequence my_sequence.nim               # compile
 
 ## CLI reference
 
-All flags are optional except `--output`.
+All flags are optional .
 
 | Flag | Description |
 |---|---|
-| `-o`, `--output=<file>` | Output `.seq` file path **(required)** |
+| `-o`, `--output=<file>` | Output `.seq` file path |
 | `-i`, `--input=<file>` | Load protocol parameters from a previous `.seq` file |
 | `--no-gui` | Write the sequence immediately without opening the GUI |
 | `--manufacturer=<name>` | Scanner manufacturer (e.g. `Siemens Healthcare`) |

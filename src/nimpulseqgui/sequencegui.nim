@@ -70,8 +70,20 @@ proc createPropertyContainer(propertyName: string, opts: Opts, prot: MRProtocolR
     updateValue()
 
     proc editPressCallback(click: ClickEvent) =
-        var win = showPropertyEditor(opts, prot, propertyName, validateProc)
+        var win = createPropertyEditorWindow(opts, prot, propertyName, validateProc)
         win.onDispose = proc(e: WindowDisposeEvent) = updateValue()
+        #win.showModalAndRefresh(parentWindow)
+        
+        proc resizeTimer(event: TimerEvent) =
+            let height = win.height
+            let width = win.width
+            win.height = height+1
+            win.width = width+1
+            win.height = height
+            win.width = width
+    
+        startTimer(50, resizeTimer)
+        
         win.showModal(parentWindow)
 
     editButton.onClick = editPressCallback
@@ -92,7 +104,7 @@ proc sequenceGUI*(outputFolder: string, opts: Opts, prot: MRProtocolRef, validat
     ## The returned window is not shown automatically — call ``window.show()`` after
     ## optionally customising the title.
     var window = newWindow("Nimpulseq GUI")
-    window.width = 800.scaleToDpi
+    window.width = 600.scaleToDpi
     window.height = 600.scaleToDpi
     var mainContainer = newLayoutContainer(Layout_Vertical)
     var propertyPanelContainer = newLayoutContainer(Layout_Vertical)

@@ -143,8 +143,11 @@ proc numericEditor[T](window: Window, opts: Opts, prot: MRProtocolRef, propertyN
     var editWidgetsContainer = newLayoutContainer(Layout_Horizontal)
     editWidgetsContainer.yAlign = YAlign_Center
     var nameLabel = newLabel(propertyName)
+    nameLabel.widthMode = WidthMode_Expand
     var textEdit = newTextBox(currentVal.repr)
+    textEdit.widthMode = WidthMode_Expand
     var unitLabel = newLabel(prot[propertyName].unit)
+    unitLabel.widthMode = WidthMode_Expand
     var validateButton = newButton("Validate")
     editWidgetsContainer.add(nameLabel)
     editWidgetsContainer.add(textEdit)
@@ -363,7 +366,7 @@ proc comboEditor(window: Window, opts: Opts, prot: MRProtocolRef, propertyName: 
 
     return editorContainer
 
-proc showPropertyEditor*(opts: Opts, prot: MRProtocolRef, propertyName: string, validateProc: ProcValidateProtocol): Window {. discardable .} =
+proc createPropertyEditorWindow*(opts: Opts, prot: MRProtocolRef, propertyName: string, validateProc: ProcValidateProtocol): Window {. discardable .} =
     ## Creates and returns a modal editor window for the named protocol property.
     ##
     ## The editor type is selected automatically from the property's ``pType``:
@@ -380,7 +383,7 @@ proc showPropertyEditor*(opts: Opts, prot: MRProtocolRef, propertyName: string, 
     let prop = prot[propertyName]
     var editorWindow = newWindow("Edit property " & propertyName)
     editorWindow.width = 300.scaleToDpi
-    editorWindow.height = 150.scaleToDpi
+    editorWindow.height = 160.scaleToDpi
     var container: LayoutContainer
     case prop.pType
     of ptInt:
