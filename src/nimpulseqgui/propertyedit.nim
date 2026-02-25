@@ -381,7 +381,7 @@ proc createPropertyEditorWindow*(opts: Opts, prot: MRProtocolRef, propertyName: 
     let prop = prot[propertyName]
     var editorWindow = newWindow("Edit property " & propertyName)
     editorWindow.width = 300.scaleToDpi
-    editorWindow.height = 150.scaleToDpi
+    editorWindow.height = 170.scaleToDpi
     var container: LayoutContainer
     case prop.pType
     of ptInt:
