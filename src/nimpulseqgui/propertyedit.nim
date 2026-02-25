@@ -10,12 +10,13 @@ import nimpulseq
 import std/math
 import std/strformat
 import std/strutils
+import utils
 
 const errorColor = rgb(255, 128, 128, 255)
 const okColor = rgb(255, 255, 255, 255)
 
 template addStretch(container: LayoutContainer) =
-    var emptyLabel = newLabel()
+    var emptyLabel = newLabelFont()
     emptyLabel.heightMode = HeightMode_Expand
     container.add(emptyLabel)
 
@@ -142,19 +143,16 @@ proc numericEditor[T](window: Window, opts: Opts, prot: MRProtocolRef, propertyN
         max = binarySearch[false, T](opts, protCopy, propertyName, validateProc)
     var editWidgetsContainer = newLayoutContainer(Layout_Horizontal)
     editWidgetsContainer.yAlign = YAlign_Center
-    var nameLabel = newLabel(propertyName)
-    nameLabel.widthMode = WidthMode_Expand
+    var nameLabel = newLabelFont(propertyName)
     var textEdit = newTextBox(currentVal.repr)
-    textEdit.widthMode = WidthMode_Expand
-    var unitLabel = newLabel(prot[propertyName].unit)
-    unitLabel.widthMode = WidthMode_Expand
+    var unitLabel = newLabelFont(prot[propertyName].unit)
     var validateButton = newButton("Validate")
     editWidgetsContainer.add(nameLabel)
     editWidgetsContainer.add(textEdit)
     editWidgetsContainer.add(unitLabel)
     editWidgetsContainer.add(validateButton)
     editorContainer.add(editWidgetsContainer)
-    var minMaxLabel = newLabel("Min: " & formatVal(min) & " Max: " & formatVal(max) & "\nIncrement: " & formatVal(increment))
+    var minMaxLabel = newLabelFont("Min: " & formatVal(min) & " Max: " & formatVal(max) & "\nIncrement: " & formatVal(increment))
     minMaxLabel.widthMode = WidthMode_Fill
     minMaxLabel.xTextAlign = XTextAlign_Center
     editorContainer.add(minMaxLabel)
@@ -243,9 +241,9 @@ proc boolEditor(window: Window, opts: Opts, prot: MRProtocolRef, propertyName: s
     var editorContainer = newLayoutContainer(Layout_Vertical)
 
     var checkboxContainer = newLayoutContainer(Layout_Horizontal)
-    var emptyLabel1 = newLabel()
+    var emptyLabel1 = newLabelFont()
     emptyLabel1.widthMode = WidthMode_Expand
-    var emptyLabel2 = newLabel()
+    var emptyLabel2 = newLabelFont()
     emptyLabel2.widthMode = WidthMode_Expand
     var propertyCheckbox = newCheckbox(propertyName)
     var currentVal = prot[propertyName].boolVal
@@ -305,7 +303,7 @@ proc comboEditor(window: Window, opts: Opts, prot: MRProtocolRef, propertyName: 
     var editorContainer = newLayoutContainer(Layout_Vertical)
 
     var comboContainer = newLayoutContainer(Layout_Horizontal)
-    var nameLabel = newLabel(propertyName)
+    var nameLabel = newLabelFont(propertyName)
     nameLabel.widthMode = WidthMode_Auto
     nameLabel.heightMode = HeightMode_Fill
     nameLabel.yTextAlign = YTextAlign_Center
@@ -383,7 +381,7 @@ proc createPropertyEditorWindow*(opts: Opts, prot: MRProtocolRef, propertyName: 
     let prop = prot[propertyName]
     var editorWindow = newWindow("Edit property " & propertyName)
     editorWindow.width = 300.scaleToDpi
-    editorWindow.height = 160.scaleToDpi
+    editorWindow.height = 150.scaleToDpi
     var container: LayoutContainer
     case prop.pType
     of ptInt:

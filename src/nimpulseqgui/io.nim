@@ -7,6 +7,7 @@
 import definitions
 import std/strformat, std/strutils
 import nimpulseq
+import utils
 
 const protocolPreambleStart = "[NimPulseqGUI Protocol]"
 const protocolPreambleEnd = "[NimPulseqGUI Protocol End]"

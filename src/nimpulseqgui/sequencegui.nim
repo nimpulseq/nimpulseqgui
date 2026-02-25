@@ -10,6 +10,7 @@ import nigui, nigui/msgbox
 import definitions
 import std/strformat, std/strutils
 import io
+import utils
 
 const darkBGColor = rgb(192, 192, 192)
 const lightBGColor = rgb(224, 224, 224)
@@ -35,7 +36,7 @@ proc createPropertyContainer(propertyName: string, opts: Opts, prot: MRProtocolR
     editButton.heightMode = HeightMode_Fill
 
     # also the name of the property is only added if it's not a description
-    var labelName = newLabel(propertyName & ": ")
+    var labelName = newLabelFont(propertyName & ": ")
     labelName.backgroundColor = if darkBG: darkBGColor else: lightBGColor
     labelName.yTextAlign = YTextAlign_Center
     labelName.widthMode = WidthMode_Expand
@@ -46,7 +47,7 @@ proc createPropertyContainer(propertyName: string, opts: Opts, prot: MRProtocolR
         propContainer.add(editButton)
         propContainer.add(labelName)
 
-    var labelValue = newLabel()
+    var labelValue = newLabelFont()
     labelValue.backgroundColor = if darkBG: darkBGColor else: lightBGColor
     labelValue.yTextAlign = YTextAlign_Center
     labelValue.widthMode = WidthMode_Expand

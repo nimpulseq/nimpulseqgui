@@ -13,6 +13,7 @@ import std/os
 import std/strformat, std/strutils
 import nigui
 import io
+import utils
 
 proc printHelp() =
     let name = getAppFilename().extractFilename()
@@ -103,6 +104,7 @@ proc makeSequenceExe*(getDefaultProtocol: ProcGetDefaultProtocol,
     ## - ``--gradUnit``, ``--slewUnit``: units for gradient and slew-rate values.
     ## - ``--no-gui``: write the sequence directly without launching the GUI.
     ## - ``--list-manufacturers``, ``--list-models``: list available PulseqSystems presets and exit.
+    ## - ``--fontSize`` : set the font size for the GUI (optional, for hi-dpi screens, defaults to 14)
     ## - ``--help / -h``: print help and exit.
     var prot: MRProtocolRef
     var defaultOutput: string = "out.seq"
@@ -180,6 +182,8 @@ proc makeSequenceExe*(getDefaultProtocol: ProcGetDefaultProtocol,
                 quit(0)
             of "list-models":
                 doListModels = true
+            of "fontSize":
+                globalFontSize = val.parseInt()
             else:
                 echo "Unknown option: ", key
                 printHelp()
