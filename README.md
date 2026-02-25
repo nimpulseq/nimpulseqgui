@@ -162,6 +162,7 @@ All flags are optional .
 | `-o`, `--output=<file>` | Output `.seq` file path |
 | `-i`, `--input=<file>` | Load protocol parameters from a previous `.seq` file |
 | `--no-gui` | Write the sequence immediately without opening the GUI |
+| `--fontSize=<size>` | Force a font size for the GUI, for hi-dpi screens |
 | `--manufacturer=<name>` | Scanner manufacturer (e.g. `Siemens Healthcare`) |
 | `--model=<name>` | Scanner model (e.g. `MAGNETOM Prisma`) — requires `--manufacturer` |
 | `--gradient=<name>` | Gradient model (optional, defaults to standard for the given model) |
